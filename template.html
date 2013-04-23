@@ -1,0 +1,501 @@
+<!--
+Google IO 2012/2013 HTML5 Slide Template
+
+Authors: Eric Bidelman <ebidel@gmail.com>
+         Luke Mahé <lukem@google.com>
+
+URL: https://code.google.com/p/io-2012-slides
+-->
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">-->
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+  <!--This one seems to work all the time, but really small on ipad-->
+  <!--<meta name="viewport" content="initial-scale=0.4">-->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="stylesheet" media="all" href="theme/css/default.css">
+  <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="theme/css/phone.css">
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+  <script data-main="js/slides" src="js/require-1.0.8.min.js"></script>
+   <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+
+</head>
+<body style="opacity: 0">
+
+<slides class="layout-widescreen">
+
+  <slide class="logoslide nobackground">
+    <article class="flexbox vcenter">
+      <span><img src="images/mew.png" style ="height:100px; width:100px;"></span>
+      <h2>Mew</h2>
+    </article>
+  </slide>
+
+  <slide class="title-slide segue nobackground">
+    <aside class="gdbar"><img src="images/mew.png"></aside>
+    <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
+    <hgroup class="auto-fadein">
+      <h1 data-config-title><!-- populated from slide_config.json --></h1>
+      <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
+      <p data-config-presenter><!-- populated from slide_config.json --></p>
+    </hgroup>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Pain</h2>
+      <h3></h3>
+    </hgroup>
+    <article>
+      <p></p>
+      <ul class="build">
+        <li>Isolated and Fragmented messaging channels</li>
+        <li>Conversations split over many channels</li>
+        <li>87% of the world does not own a Smartphone</li>
+        <li>Internet Messaging loses the idea of Instant Messaging</li>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Related Work</h2>
+    </hgroup>
+    <article class="flexbox vcenter">
+      <img src="images/market_map.jpg" style = "height:100%; width: 75%;" alt="" title="">
+    </article>
+  </slide>
+
+
+  <slide>
+    <hgroup>
+      <h2>Why SMS?</h2>
+      <h3></h3>
+    </hgroup>
+    <article>
+      <p></p>
+      <ul class="build">
+            <div style = "float:left">
+              <center><img src = "images/market_share.png" style = "height:60%"></center>
+            </div>
+            <div style = "float:right; width: 40%">
+              <ul class = "build">
+            <li>A large section of the mobile market is non-smartphone users, no internet</li><br/>
+            <li>SMS is built into every phone</li><br/>
+            <li>SMS is reliable as compared to Internet Messaging</li><br/>
+          </ul>
+          </div>
+      </ul>
+    </article>
+  </slide>
+
+
+  <slide class="segue dark nobackground">
+    <aside class="gdbar"><img src="images/mew.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Mew</h2>
+      <h3>Combines SMS with Internet Messaging</h3>
+    </hgroup>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Mew</h2>
+      <h3></h3>
+    </hgroup>
+    <article>
+      <p></p>
+      <ul class="build">
+            <div style = "float:left">
+              <center><img src = "images/sms_internet.png" style = "width:90%"></center>
+            </div>
+            <div style = "float:right; width: 50%">
+              <ul class = "build">
+            <li>Saves more money by trying to send every message over Internet first</li><br/>
+            <li>Messages are delivered even if you or the receiver lose internet connection</li><br/>
+            <li>Unified and consistent user interface as existing SMS messages on the phone are preserved</li><br/>
+          </ul>
+          </div>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Features</h2>
+      <h3></h3>
+    </hgroup>
+    <article>
+      <p></p>
+      <ul class="build">
+            <div style = "float:left">
+              <center><img src = "images/conversation.png" style = "height:80%"></center>
+            </div>
+            <div style = "float:right; width: 50%">
+              <ul class = "build">
+            <li>Media Sharing : audio, video, images</li><br/>
+            <li>Group Messaging : amongst Mew users</li><br/>
+            <li>Web client: Web messaging</li><br/>
+          </ul>
+          </div>
+      </ul>
+    </article>
+  </slide>
+
+
+    <slide>
+    <hgroup>
+      <h2>Building Mew</h2>
+      <h3>Challenges and Problems Faced</h3>
+    </hgroup>
+    <article>
+      <ul class="build">
+        <li>Light weight messaging protocol</li>
+        <li>Syncing all messages</li>
+        <li>Responsive, Optimized Web Client</li>
+        <li>Do not re-invent the wheel!</li>
+        <li>Message ACK Timeout</li>
+      </ul>
+    </article>
+  </slide>
+
+
+  <slide>
+    <hgroup>
+      <h2>Architecture</h2>
+      <h3>Basics</h3>
+    </hgroup>
+    <article>
+      <p>Client</p>
+      <ul class="build">
+            <li>Android app, Web Browser</li><br/>
+            <li>Send and Receive Messages (SMS, IM)</li><br/>
+            <li>Decide when to send SMS or IM</li>
+      </ul>
+
+      <p>Server</p>
+      <ul class="build">
+            <li>Forward message from A to B</li><br/>
+            <li>Save all messages</li><br/>
+            <li>Sync Contacts</li><br/>
+      </ul>
+    </article>
+  </slide>
+
+    <slide>
+    <hgroup>
+      <h2>Architecture</h2>
+      <h3>Publish Subscribe</h3>
+    </hgroup>
+    <article>
+      <div style = "float:left; width:50%">
+      <p>Client</p>
+      <ul class="build">
+            <li>To receive a message: Subscribe to "+65 9123 4567"</li><br/>
+            <li>To send a message: Send to topic = Phone number</li><br/>
+            <li>If offline, or message times out, send via SMS</li>
+      </ul>
+
+      <p>Server</p>
+      <ul class="build">
+            <li>Broker with a presence list</li><br/>
+      </ul>
+    </div>
+    <div style = "float:right">
+      <img src = "images/pubsub.png">
+    </div>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Design Choices</h2>
+      <h3>Server</h3>
+    </hgroup>
+    <article>
+      <p>Protocol: MQTT</p>
+      <ul class="build">
+            <li>Light Weight protocol</li>
+            <li>Client side: IBM wmqtt.jar - MQTT client implementation</li>
+            <li>Server side: Mosquitto: open source MQTT implementation</li>
+            <li>connect(), subscribe(), publish(), receive()</li>
+      </ul>
+
+      <p>Why not XMPP?</p>
+      <ul class="build">
+            <li>Not designed for mobile phones</li>
+            <li>Mobile messaging should not have the concept of presence</li>
+            <li>Libjingle: written in C</li>
+      </ul>
+    </article>
+  </slide>
+
+ <slide>
+    <hgroup>
+      <h2>Design Choices</h2>
+      <h3>Server</h3>
+    </hgroup>
+    <article>
+      <p>Media Messaging</p>
+      <ul class="build">
+            <li>Client uploads file with a POST request</li>
+            <li>Server saves file and generates unique key</li>
+            <li>Client sends key to recipient</li>
+            <li>Recipient retrieves file from server with the given key</li>
+      </ul>
+
+      <p>Database</p>
+      <ul class="build">
+            <li>Mongodb: Horizontal Scalability</li>
+            <li>Stores data in JSON Documents</li>
+            <li>Minimal processing overhead</li>
+      </ul>
+    </article>
+  </slide>
+
+
+  <slide>
+    <hgroup>
+      <h2>Design Choices</h2>
+      <h3>Client</h3>
+    </hgroup>
+    <article>
+      <p>Android</p>
+      <ul class="build">
+            <li>Android Messaging Open Source application</li>
+            <li>A Message parser</li>
+            <li>Decides when to send SMS or IM</li>
+      </ul>
+
+      <p>Web</p>
+      <ul class="build">
+            <li>HTML5 Websockets, Mosquitto.js</li>
+            <li>Connected to the broker via Apache mod_websocket</li>
+            <li>JSON dumped from server to client</li>
+      </ul>
+    </article>
+  </slide>
+
+
+  <slide>
+    <hgroup>
+      <h2>Architecture</h2>
+    </hgroup>
+    <article class="flexbox vcenter">
+      <img src="images/system.png" style = "height:100%; width: 120%" alt="" title="">
+    </article>
+  </slide>
+
+ <slide>
+    <hgroup>
+      <h2>Architecture</h2>
+    </hgroup>
+    <article class="flexbox vcenter">
+      <img src="images/flowchart.png" style = "height:100%; width: 100%" alt="" title="">
+    </article>
+  </slide>
+
+  
+ <slide>
+    <hgroup>
+      <h2>Architecture</h2>
+    </hgroup>
+    <article class="flexbox vcenter">
+      <img src="images/timing.png" style = "height:100%; width: 100%" alt="" title="">
+    </article>
+  </slide>
+
+    <slide class="segue dark nobackground">
+    <aside class="gdbar"><img src="images/mew.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Problem</h2>
+      <h3>How do we determine the ACK Timeout time?</h3>
+    </hgroup>
+  </slide>
+
+
+  <slide>
+    <hgroup>
+      <h2>ACK Timeout</h2>
+      <h3></h3>
+    </hgroup>
+    <article>
+      <p>Problem</p>
+      <ul class="build">
+            <li>Higher latency on Mobile networks</li>
+            <li>Duplicate messages</li>
+            <li>Wasted SMS</li>
+      </ul>
+
+      <p>Data Collection</p>
+      <ul class="build">
+            <li>Latency data on mobile networks and WiFi</li>
+            <li>Time spent by users on different types of networks</li>
+      </ul>
+    </article>
+  </slide>
+
+<slide>
+    <hgroup>
+      <h2>ACK Timeout</h2>
+      <h3>Time spent on each network</h3>
+    </hgroup>
+    <article class="flexbox vcenter">
+      <img src="images/timeonnetwork.png" style = "height:100%; width: 100%" alt="" title="">
+    </article>
+  </slide>
+
+<slide>
+    <hgroup>
+      <h2>ACK Timeout</h2>
+      <h3>WiFi Successful message</h3>
+    </hgroup>
+    <article class="flexbox vcenter">
+      <img src="images/ackwifi.png" style = "height:100%; width: 100%" alt="" title="">
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>ACK Timeout</h2>
+      <h3>WiFi Unsuccessful message</h3>
+    </hgroup>
+    <article class="flexbox vcenter">
+      <img src="images/nackwifi.png" style = "height:100%; width: 100%" alt="" title="">
+    </article>
+  </slide>
+
+<slide>
+    <hgroup>
+      <h2>ACK Timeout</h2>
+      <h3>Mobile Network Successful message</h3>
+    </hgroup>
+    <article class="flexbox vcenter">
+      <img src="images/ack3g.png" style = "height:100%; width: 100%" alt="" title="">
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>ACK Timeout</h2>
+      <h3>Mobile Network Unsuccessful message</h3>
+    </hgroup>
+    <article class="flexbox vcenter">
+      <img src="images/nack3g.png" style = "height:100%; width: 100%" alt="" title="">
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>ACK Timeout</h2>
+      <h3>Solution</h3>
+    </hgroup>
+    <article>
+      <p></p>
+      <ul class="build">
+            <li>Dynamic ACK Timeout based on network</li>
+            <li>Start with a larger timeout</li>
+      </ul>
+    </article>
+  </slide>
+
+     <slide class="segue dark nobackground">
+    <aside class="gdbar"><img src="images/mew.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Future Work</h2>
+      <h3>Messaging still has a lot to innovate!</h3>
+    </hgroup>
+  </slide>
+
+
+<slide>
+    <hgroup>
+      <h2>Future Work</h2>
+      <h3></h3>
+    </hgroup>
+    <article>
+      <p></p>
+      <ul class="build">
+            <li>Important Messages</li>
+            <li>Smarter Message text processing</li>
+            <li>SMS Proxy</li>
+      </ul>
+    </article>
+  </slide>
+
+     <slide class="segue dark nobackground">
+    <aside class="gdbar"><img src="images/mew.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Why should you care?</h2>
+    </hgroup>
+  </slide>
+
+     <slide class="segue dark nobackground">
+    <aside class="gdbar"><img src="images/mew.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Learnings</h2>
+      <h3>Reflection is the key to success!</h3>
+    </hgroup>
+  </slide>
+
+<!--
+  Architecture overview
+  Internet Messaging: MQTT
+  Android Application
+  Web client
+  Database
+  Experiments and Evaluation
+  Future Work
+  Why is this important
+  Learnings
+-->
+
+<!--   <slide>
+    <article>
+      <iframe data-src="http://localhost/~angadsingh/mewb/"></iframe>
+    </article>
+  </slide>
+ -->
+  <slide class="thank-you-slide segue nobackground">
+    <aside class="gdbar right"><img src="images/mew.png"></aside>
+    <article class="flexbox vleft auto-fadein">
+      <h2>Thank You!</h2>
+      <p></p>
+    </article>
+    <p class="auto-fadein" data-config-contact>
+      <!-- populated from slide_config.json -->
+    </p>
+  </slide>
+
+  <slide class="logoslide dark nobackground">
+    <article class="flexbox vcenter">
+      <span><img src="images/mew.png"></span>
+    </article>
+  </slide>
+
+  <slide class="backdrop"></slide>
+
+</slides>
+
+<script>
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-XXXXXXXX-1']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
+
+<!--[if IE]>
+  <script src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>
+  <script>CFInstall.check({mode: 'overlay'});</script>
+<![endif]-->
+</body>
+</html>
